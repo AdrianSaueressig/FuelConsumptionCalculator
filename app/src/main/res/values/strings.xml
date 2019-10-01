@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">BenzinverbrauchBerechner</string>
+
+    <!-- Navigation Bar-->
+    <string name="title_home">Home</string>
+    <string name="title_new_entry">Neuer Eintrag</string>
+    <string name="title_history">Graph</string>
+
+    <!-- Activities -->
+    <string name="activity_content_home">Willkommen bei deiner persönlichen TankApp! \nBei Fragen kannst du mich gerne anrufen oder eine Mail schreiben.\n
+    Unten siehst du 3 Knöpfe. Der Home-Knopf wird dich auf diese Seite bringen.\nBei "Neuer Eintrag" kannst du nach dem Tanken deine Werte reinschreiben und bei "Verlauf" soll in Zukunft ein Graph auftauchen, der zeigt wie sich die Daten über die Zeit so geändert haben. Viel Spaß :)</string>
+
+    <string name="title_activity_new_entry">Neuen Eintrag hinzufügen</string>
+    <string name="activity_newEntry_content">Trage hier deine aktuellen Werte ein.</string>
+    <string name="button_save">Speichern</string>
+    <string name="input_litres">Getankte Liter</string>
+    <string name="input_kilometers">Kilometerstand</string>
+    <string name="input_tripmeter">Tageskilometerzähler</string>
+    <string name="input_pricePerLitre">Preis pro Liter</string>
+
+    <string name="title_activity_graph">Verlauf</string>
+    <string name="content_activity_graph">In Kürze verfügbar. Zum Druckmachen mich anrufen oder Mail schreiben :D</string>
+
+    <!-- Graph fragment -->
+    <string name="list_title_date">Datum</string>
+    <string name="list_title_consumption">Verbrauch</string>
+    <string name="list_title_litres">Getankte Liter</string>
+    <string name="list_title_tripmeter">Gefahrene Km</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
