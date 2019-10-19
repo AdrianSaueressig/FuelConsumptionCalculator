@@ -5,6 +5,11 @@ As said above this app is to calculate fuel consumption, not much else.
 
 This is a project intended for private use by some selected persons. It has not been optimized to be used by other people. 
 
+## Why I created this
+I created this project to learn the basics about developing Android Apps, their UI and how to connect an app with a database on the device. Since I never did this professionally I'm aware that a lot of the code is most likely bad practice and could be improved by looking into it more.
+
+I developed this in 2016.
+
 ## Requirements and setup
 * Java 7 or higher
 * Android 7.0 Nougat or higher
