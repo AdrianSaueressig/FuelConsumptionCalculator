@@ -65,7 +65,7 @@ public class TankEntryDetailViewFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_tank_entry_detail_view, container, false);
-        TextView tv = v.findViewById(R.id.textView3Really);
+        TextView tv = v.findViewById(R.id.tankEntryDetailTextView);
         tv.setText(entry.toString());
 
         return v;

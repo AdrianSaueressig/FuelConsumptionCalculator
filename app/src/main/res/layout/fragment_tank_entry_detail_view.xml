@@ -4,10 +4,8 @@
     android:layout_height="match_parent"
     tools:context="com.nolari.benzinverbrauchberechner.fragment.TankEntryDetailViewFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
     <TextView
-        android:id="@+id/textView3Really"
+        android:id="@+id/tankEntryDetailTextView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="TextView" />
