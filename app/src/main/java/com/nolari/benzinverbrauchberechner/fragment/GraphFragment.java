@@ -1,8 +1,9 @@
 package com.nolari.benzinverbrauchberechner.fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,6 @@ public class GraphFragment extends Fragment implements AdapterView.OnItemClickLi
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        ((HomeScreen)getActivity()).loadFragment(TankEntryDetailViewFragment.newInstance(position, id, (TankEntry)parent.getAdapter().getItem(position)));
+        getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, TankEntryDetailViewFragment.newInstance(position, id, (TankEntry)parent.getAdapter().getItem(position)));
     }
 }

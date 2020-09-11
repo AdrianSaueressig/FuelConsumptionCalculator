@@ -27,13 +27,12 @@ import com.nolari.benzinverbrauchberechner.database.TankEntry;
 import com.nolari.benzinverbrauchberechner.fragment.GraphFragment;
 import com.nolari.benzinverbrauchberechner.fragment.HomeFragment;
 import com.nolari.benzinverbrauchberechner.fragment.NewEntryFragment;
+import com.nolari.benzinverbrauchberechner.navigation.BottomNavigationManager;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class HomeScreen extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
-
-    Fragment currentFragment = null;
+public class HomeScreen extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +44,9 @@ public class HomeScreen extends AppCompatActivity implements BottomNavigationVie
         myToolbar.inflateMenu(R.menu.toptoolbar);
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(this);
-        loadFragment(new HomeFragment());
+        BottomNavigationManager navManager = new BottomNavigationManager(getSupportFragmentManager());
+        navigation.setOnNavigationItemSelectedListener(navManager);
+        navManager.loadFragment(new HomeFragment());
     }
 
     @Override
@@ -71,45 +71,6 @@ public class HomeScreen extends AppCompatActivity implements BottomNavigationVie
         startActivity(intent);
     }
 
-    public boolean loadFragment(Fragment fragment){
-        if(fragment == null){
-            return false;
-        }
-        FragmentTransaction ft = getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment);
-        if(currentFragment!=null){
-            //not on startup
-            ft.addToBackStack(null);
-        }
-        ft.commit();
-        currentFragment = fragment;
-        return true;
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Fragment fragment = null;
-
-        switch(item.getItemId()){
-            case R.id.navigation_home:
-                if(!(currentFragment instanceof HomeFragment)){
-                    fragment= new HomeFragment();
-                }
-                break;
-            case R.id.navigation_new_entry:
-                if(!(currentFragment instanceof NewEntryFragment)){
-                    fragment = new NewEntryFragment();
-                }
-                break;
-            case R.id.navigation_history:
-                if(!(currentFragment instanceof GraphFragment)){
-                    fragment = new GraphFragment();
-                }
-                break;
-        }
-
-        return loadFragment(fragment);
-    }
-
     public void onSaveClick(View button){
         TextInputEditText inputTripmeter = findViewById(R.id.input_tripmeter);
         TextInputEditText inputKilometres = findViewById(R.id.input_kilometers);
@@ -117,6 +78,8 @@ public class HomeScreen extends AppCompatActivity implements BottomNavigationVie
         TextInputEditText inputPricePerLitre = findViewById(R.id.input_pricePerLitre);
         TextInputEditText inputNotes = findViewById(R.id.input_notes);
         ProgressBar progressBar = findViewById(R.id.progressBar);
+
+        progressBar.setVisibility(View.VISIBLE);
 
         // read values
         if(inputTripmeter.getText().toString().isEmpty() ||
@@ -134,7 +97,6 @@ public class HomeScreen extends AppCompatActivity implements BottomNavigationVie
         String notes = inputNotes.getText().toString();
 
         //do stuff with database
-        progressBar.setVisibility(View.VISIBLE);
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         TankDatabase database = DatabaseSingleton.getInstance(getApplicationContext());
 
