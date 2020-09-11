@@ -123,8 +123,8 @@ public class HomeScreen extends AppCompatActivity implements BottomNavigationVie
             showToast("Bitte in allen Feldern etwas eingeben vor dem Speichern!");
             return;
         }
-        int tripmeter = Integer.parseInt(inputTripmeter.getText().toString());
-        int kilometers = Integer.parseInt(inputKilometres.getText().toString());
+        float tripmeter = Float.parseFloat(inputTripmeter.getText().toString().replace(",", "."));
+        float kilometers = Float.parseFloat(inputKilometres.getText().toString().replace(",", "."));
         float litres = Float.parseFloat(inputLitres.getText().toString().replace(",", "."));
         float pricePerLitre = Float.parseFloat(inputPricePerLitre.getText().toString().replace(",", "."));
         float fuelConsumption = 0;
@@ -173,7 +173,7 @@ public class HomeScreen extends AppCompatActivity implements BottomNavigationVie
         showToast("Alles gelöscht :)");
     }
 
-    private float calculateFuelConsumption(int tripmeter, float litres) {
+    private float calculateFuelConsumption(float tripmeter, float litres) {
         return (100 * litres)/tripmeter;
     }
 }
