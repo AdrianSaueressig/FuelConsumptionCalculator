@@ -1,5 +1,6 @@
 package com.nolari.benzinverbrauchberechner.activity;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -14,6 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -150,6 +152,22 @@ public class HomeScreen extends AppCompatActivity implements BottomNavigationVie
         newEntry.setLitres(litres);
         newEntry.setPricePerLitre(pricePerLitre);
         database.getTankEntryDao().insertAll(newEntry);
+
+        // clear fields
+        inputLitres.setText("");
+        inputPricePerLitre.setText("");
+        inputTripmeter.setText("");
+        inputKilometres.setText("");
+
+        //hide keyboard
+        InputMethodManager imm = (InputMethodManager) this.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = this.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(this);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
         //output
         progressBar.setVisibility(View.GONE);
