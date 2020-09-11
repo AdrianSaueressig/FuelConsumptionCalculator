@@ -1,8 +1,13 @@
 package com.nolari.benzinverbrauchberechner.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.preference.PreferenceManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,4 +27,18 @@ public class NewEntryFragment extends Fragment {
         return inflater.inflate(R.layout.activity_new_entry, null);
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
+        boolean isSafeModeOn = preferences.getBoolean(getString(R.string.settings_key_safeMode), true);
+        if(!isSafeModeOn){
+            getActivity().findViewById(R.id.button_delete).setVisibility(View.VISIBLE);
+        }else{
+            getActivity().findViewById(R.id.button_delete).setVisibility(View.GONE);
+        }
+    }
 }

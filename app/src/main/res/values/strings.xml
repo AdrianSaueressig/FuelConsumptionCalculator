@@ -37,5 +37,7 @@
     <string name="settings_title_safeMode">Versteckt Löschbuttons</string>
     <string name="delete_all_entries">DELETE ALL ENTRIES</string>
     <string name="input_notes">Notizen (optional)</string>
+    <string name="settings_key_safeMode">safeMode</string>
+    <string name="settings_category_general">Allgemein</string>
 
 </resources>

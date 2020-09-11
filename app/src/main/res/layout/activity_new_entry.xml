@@ -95,16 +95,6 @@
             android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyle"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_save" />
-
     <Button
         android:id="@+id/button_delete"
         android:layout_width="wrap_content"
@@ -112,10 +102,10 @@
         android:layout_marginTop="72dp"
         android:onClick="onDeleteClick"
         android:text="@string/delete_all_entries"
-        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_layout_pricePerLitre" />
+        app:layout_constraintTop_toBottomOf="@+id/button_save" />
 
     <Button
         android:id="@+id/button_save"

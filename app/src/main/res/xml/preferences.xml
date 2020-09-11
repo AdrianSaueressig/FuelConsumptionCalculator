@@ -32,19 +32,20 @@
             app:title="@string/attachment_title" />
 
     </PreferenceCategory> -->
+    <PreferenceCategory app:title="@string/settings_category_general"
+        app:key="settings_category_general">
+        <SwitchPreferenceCompat
+            app:key="@string/settings_key_safeMode"
+            app:title="@string/settings_title_safeMode"
+            android:defaultValue="true"/>
 
-    <SwitchPreferenceCompat
-        app:key="safeMode"
-        app:title="@string/settings_title_safeMode"
-        android:defaultValue="true"/>
-
-    <Preference
-        app:key="feedback"
-        app:title="@string/settings_title_sendFeedback"
-        app:summary="@string/settings_summary_sendFeedback">
-        <intent
-            android:action="android.intent.action.SENDTO"
-            android:data="mailto:adrian@familie-saueressig.de?subject=TankApp"/>
-    </Preference>
-
+        <Preference
+            app:key="feedback"
+            app:title="@string/settings_title_sendFeedback"
+            app:summary="@string/settings_summary_sendFeedback">
+            <intent
+                android:action="android.intent.action.SENDTO"
+                android:data="mailto:adrian@familie-saueressig.de?subject=TankApp"/>
+        </Preference>
+    </PreferenceCategory>
 </PreferenceScreen>

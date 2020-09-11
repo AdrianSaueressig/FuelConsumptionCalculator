@@ -77,9 +77,6 @@ public class HomeScreen extends AppCompatActivity{
         TextInputEditText inputLitres = findViewById(R.id.input_litres);
         TextInputEditText inputPricePerLitre = findViewById(R.id.input_pricePerLitre);
         TextInputEditText inputNotes = findViewById(R.id.input_notes);
-        ProgressBar progressBar = findViewById(R.id.progressBar);
-
-        progressBar.setVisibility(View.VISIBLE);
 
         // read values
         if(inputTripmeter.getText().toString().isEmpty() ||
@@ -136,9 +133,7 @@ public class HomeScreen extends AppCompatActivity{
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
         //output
-        progressBar.setVisibility(View.GONE);
-
-        showToast("Eingaben wurden erfolgreich gespeichert! Der Verbrauch in l/100km des letzten Tankens ist: " + fuelConsumption);
+        showToast("Eingaben wurden erfolgreich gespeichert! Der Verbrauch in l/100km des letzten Tankens ist: " + String.format("%.1f", fuelConsumption));
     }
 
     private void showToast(String text) {
