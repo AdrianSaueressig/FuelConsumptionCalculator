@@ -36,5 +36,6 @@
     <string name="settings_summary_sendFeedback">Berichte von Fehlern oder äußere Wünsche zu neuen Funktionen</string>
     <string name="settings_title_safeMode">Versteckt Löschbuttons</string>
     <string name="delete_all_entries">DELETE ALL ENTRIES</string>
+    <string name="input_notes">Notizen (optional)</string>
 
 </resources>

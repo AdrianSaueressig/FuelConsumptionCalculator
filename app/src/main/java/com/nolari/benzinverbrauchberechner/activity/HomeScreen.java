@@ -115,6 +115,7 @@ public class HomeScreen extends AppCompatActivity implements BottomNavigationVie
         TextInputEditText inputKilometres = findViewById(R.id.input_kilometers);
         TextInputEditText inputLitres = findViewById(R.id.input_litres);
         TextInputEditText inputPricePerLitre = findViewById(R.id.input_pricePerLitre);
+        TextInputEditText inputNotes = findViewById(R.id.input_notes);
         ProgressBar progressBar = findViewById(R.id.progressBar);
 
         // read values
@@ -130,6 +131,7 @@ public class HomeScreen extends AppCompatActivity implements BottomNavigationVie
         float litres = Float.parseFloat(inputLitres.getText().toString().replace(",", "."));
         float pricePerLitre = Float.parseFloat(inputPricePerLitre.getText().toString().replace(",", "."));
         float fuelConsumption = 0;
+        String notes = inputNotes.getText().toString();
 
         //do stuff with database
         progressBar.setVisibility(View.VISIBLE);
@@ -151,6 +153,7 @@ public class HomeScreen extends AppCompatActivity implements BottomNavigationVie
         newEntry.setKilometres(kilometers);
         newEntry.setLitres(litres);
         newEntry.setPricePerLitre(pricePerLitre);
+        newEntry.setNotes(notes);
         database.getTankEntryDao().insertAll(newEntry);
 
         // clear fields
@@ -158,6 +161,7 @@ public class HomeScreen extends AppCompatActivity implements BottomNavigationVie
         inputPricePerLitre.setText("");
         inputTripmeter.setText("");
         inputKilometres.setText("");
+        inputNotes.setText("");
 
         //hide keyboard
         InputMethodManager imm = (InputMethodManager) this.getSystemService(Activity.INPUT_METHOD_SERVICE);

@@ -1,0 +1,76 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 3,
+    "identityHash": "6da036904be93136e16abc1eaf075d95",
+    "entities": [
+      {
+        "tableName": "TankEntry",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` TEXT, `litres` REAL NOT NULL, `pricePerLitre` REAL NOT NULL, `tripmeter` REAL NOT NULL, `kilometres` REAL NOT NULL, `fuelConsumption` REAL NOT NULL, `notes` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "date",
+            "columnName": "date",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "litres",
+            "columnName": "litres",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pricePerLitre",
+            "columnName": "pricePerLitre",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tripmeter",
+            "columnName": "tripmeter",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "kilometres",
+            "columnName": "kilometres",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fuelConsumption",
+            "columnName": "fuelConsumption",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "notes",
+            "columnName": "notes",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "uid"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6da036904be93136e16abc1eaf075d95')"
+    ]
+  }
+}

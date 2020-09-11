@@ -32,6 +32,9 @@ public class TankEntry {
     @ColumnInfo
     private float fuelConsumption;
 
+    @ColumnInfo
+    private String notes;
+
     public float getFuelConsumption() {
         return fuelConsumption;
     }
@@ -88,8 +91,16 @@ public class TankEntry {
         this.kilometres = kilometres;
     }
 
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public String getNotes(){
+        return notes;
+    }
+
     @Override
     public String toString(){
-        return "Uid: " + uid + " Date: " + date + " tripmeter: " + tripmeter + " kilometers: " + kilometres + " litres: " + litres + " price per litre: " + pricePerLitre + " fuelConsumption: " + fuelConsumption;
+        return "Uid: " + uid + " Date: " + date + " tripmeter: " + tripmeter + " kilometers: " + kilometres + " litres: " + litres + " price per litre: " + pricePerLitre + " fuelConsumption: " + fuelConsumption + " notes: " + notes;
     }
 }
