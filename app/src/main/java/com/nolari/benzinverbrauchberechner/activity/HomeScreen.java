@@ -152,7 +152,7 @@ public class HomeScreen extends AppCompatActivity{
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
         //output
-        showToast("Eingaben wurden erfolgreich gespeichert! Der Verbrauch in l/100km des letzten Tankens ist: " + String.format("%.1f", fuelConsumption));
+        showToast("Eingaben wurden erfolgreich gespeichert! Der Verbrauch in l/100km des letzten Tankens ist: " + String.format("%.1f", newEntry.getFuelConsumption()));
     }
 
     private void recalculateOlderTankEntry(TankEntry oldEntry, float newTripmeter) {
