@@ -1,7 +1,7 @@
 package com.nolari.benzinverbrauchberechner.database;
 
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.RoomDatabase;
+import androidx.room.Database;
+import androidx.room.RoomDatabase;
 
 /**
  * Created by Nolari on 03.03.2018.

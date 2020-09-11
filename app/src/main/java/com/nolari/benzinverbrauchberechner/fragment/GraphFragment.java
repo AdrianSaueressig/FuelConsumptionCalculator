@@ -2,14 +2,14 @@ package com.nolari.benzinverbrauchberechner.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.nolari.benzinverbrauchberechner.HomeScreen;
+import com.nolari.benzinverbrauchberechner.activity.HomeScreen;
 import com.nolari.benzinverbrauchberechner.R;
 import com.nolari.benzinverbrauchberechner.adapter.TankListAdapter;
 import com.nolari.benzinverbrauchberechner.database.DatabaseSingleton;
@@ -32,7 +32,7 @@ public class GraphFragment extends Fragment implements AdapterView.OnItemClickLi
 
         TankDatabase database = DatabaseSingleton.getInstance(getActivity().getApplicationContext());
         List<TankEntry> tankEntries = database.getTankEntryDao().getNewestEntries(20);
-        ArrayList<TankEntry> tankEntriesArray = new ArrayList<TankEntry>(tankEntries);
+        ArrayList<TankEntry> tankEntriesArray = new ArrayList<>(tankEntries);
 
         TankListAdapter adapter = new TankListAdapter(getActivity().getApplicationContext(), R.layout.list_view_tankentry, tankEntriesArray);
         ListView listView = v.findViewById(R.id.listView);

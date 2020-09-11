@@ -1,17 +1,24 @@
-package com.nolari.benzinverbrauchberechner;
+package com.nolari.benzinverbrauchberechner.activity;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.TextInputEditText;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.textfield.TextInputEditText;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.nolari.benzinverbrauchberechner.R;
 import com.nolari.benzinverbrauchberechner.database.DatabaseSingleton;
 import com.nolari.benzinverbrauchberechner.database.TankDatabase;
 import com.nolari.benzinverbrauchberechner.database.TankEntry;
@@ -31,9 +38,35 @@ public class HomeScreen extends AppCompatActivity implements BottomNavigationVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.top_toolbar);
+        setSupportActionBar(myToolbar);
+        myToolbar.inflateMenu(R.menu.toptoolbar);
+
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
         loadFragment(new HomeFragment());
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toptoolbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        if (item.getItemId() == R.id.action_settings) {
+            startSettings();
+            return true;
+        }else{
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void startSettings(){
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
     }
 
     public boolean loadFragment(Fragment fragment){
@@ -41,7 +74,10 @@ public class HomeScreen extends AppCompatActivity implements BottomNavigationVie
             return false;
         }
         FragmentTransaction ft = getFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment);
-        ft.addToBackStack(null);
+        if(currentFragment!=null){
+            //not on startup
+            ft.addToBackStack(null);
+        }
         ft.commit();
         currentFragment = fragment;
         return true;
@@ -78,14 +114,13 @@ public class HomeScreen extends AppCompatActivity implements BottomNavigationVie
         TextInputEditText inputLitres = findViewById(R.id.input_litres);
         TextInputEditText inputPricePerLitre = findViewById(R.id.input_pricePerLitre);
         ProgressBar progressBar = findViewById(R.id.progressBar);
-        TextView textViewResult = findViewById(R.id.showSavingResult);
 
         // read values
-        if(inputTripmeter.getText().toString() == null || inputTripmeter.getText().toString().isEmpty() ||
-            inputKilometres.getText().toString() == null || inputKilometres.getText().toString().isEmpty() ||
-            inputLitres.getText().toString() == null || inputLitres.getText().toString().isEmpty() ||
-            inputPricePerLitre.getText().toString() == null || inputPricePerLitre.getText().toString().isEmpty()){
-            textViewResult.setText("Bitte in allen Feldern etwas eingeben vor dem Speichern!");
+        if(inputTripmeter.getText().toString().isEmpty() ||
+            inputKilometres.getText().toString().isEmpty() ||
+            inputLitres.getText().toString().isEmpty() ||
+            inputPricePerLitre.getText().toString().isEmpty()){
+            showToast("Bitte in allen Feldern etwas eingeben vor dem Speichern!");
             return;
         }
         int tripmeter = Integer.parseInt(inputTripmeter.getText().toString());
@@ -118,17 +153,24 @@ public class HomeScreen extends AppCompatActivity implements BottomNavigationVie
 
         //output
         progressBar.setVisibility(View.GONE);
-        textViewResult.setText("Eingaben wurden erfolgreich gespeichert! Der Verbrauch in l/km des letzten Tankens ist: " + fuelConsumption);
+
+        showToast("Eingaben wurden erfolgreich gespeichert! Der Verbrauch in l/100km des letzten Tankens ist: " + fuelConsumption);
+    }
+
+    private void showToast(String text) {
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 
     public void onDeleteClick(View button){
-        TextView textViewResult = findViewById(R.id.showSavingResult);
-
         //do stuff with database
         TankDatabase database = DatabaseSingleton.getInstance(getApplicationContext());
 
         database.getTankEntryDao().deleteAll();
-        textViewResult.setText("Alles gelöscht :)");
+        showToast("Alles gelöscht :)");
     }
 
     private float calculateFuelConsumption(int tripmeter, float litres) {
