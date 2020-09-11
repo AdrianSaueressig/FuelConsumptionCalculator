@@ -87,7 +87,7 @@ public class HomeScreen extends AppCompatActivity{
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
 
-        // read values
+        // Check every mandatory field has data
         if(inputTripmeter.getText().toString().isEmpty() ||
             inputKilometres.getText().toString().isEmpty() ||
             inputLitres.getText().toString().isEmpty() ||
@@ -96,6 +96,7 @@ public class HomeScreen extends AppCompatActivity{
             showToast("Bitte in allen Feldern etwas eingeben vor dem Speichern!");
             return;
         }
+
         float tripmeter = Float.parseFloat(inputTripmeter.getText().toString().replace(",", "."));
         float kilometers = Float.parseFloat(inputKilometres.getText().toString().replace(",", "."));
         float litres = Float.parseFloat(inputLitres.getText().toString().replace(",", "."));
@@ -113,13 +114,7 @@ public class HomeScreen extends AppCompatActivity{
         TankDatabase database = DatabaseSingleton.getInstance(getApplicationContext());
 
         // edit old entry
-        TankEntry latestEntry = database.getTankEntryDao().getLastEntry();
-        if(latestEntry!=null){
-            fuelConsumption = calculateFuelConsumption(tripmeter, latestEntry.getLitres());
-            latestEntry.setFuelConsumption(fuelConsumption);
-            latestEntry.setTripmeter(tripmeter);
-            database.getTankEntryDao().updateTankEntry(latestEntry);
-        }
+        TankEntry latestEntry = database.getTankEntryDao().getLastEntry(date);
 
         // create new database entry
         TankEntry newEntry = new TankEntry();
@@ -128,7 +123,16 @@ public class HomeScreen extends AppCompatActivity{
         newEntry.setLitres(litres);
         newEntry.setPricePerLitre(pricePerLitre);
         newEntry.setNotes(notes);
+
+        float oldTripmeter = 0;
+        if(latestEntry!=null && latestEntry.getTripmeter() > 0){
+            oldTripmeter = latestEntry.getTripmeter();
+            newEntry.setTripmeter(oldTripmeter);
+            recalculateOlderTankEntry(newEntry, oldTripmeter);
+        }
+
         database.getTankEntryDao().insertAll(newEntry);
+        recalculateOlderTankEntry(latestEntry, tripmeter);
 
         // clear fields
         inputLitres.setText("");
@@ -149,6 +153,15 @@ public class HomeScreen extends AppCompatActivity{
 
         //output
         showToast("Eingaben wurden erfolgreich gespeichert! Der Verbrauch in l/100km des letzten Tankens ist: " + String.format("%.1f", fuelConsumption));
+    }
+
+    private void recalculateOlderTankEntry(TankEntry oldEntry, float newTripmeter) {
+        if(oldEntry==null) {
+            return;
+        }
+        oldEntry.setFuelConsumption(calculateFuelConsumption(newTripmeter, oldEntry.getLitres()));
+        oldEntry.setTripmeter(newTripmeter);
+        DatabaseSingleton.getInstance(getApplicationContext()).getTankEntryDao().updateTankEntry(oldEntry);
     }
 
     private void showToast(String text) {

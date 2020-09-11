@@ -6,6 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,11 +25,11 @@ public interface TankEntryDao {
     @Delete
     void delete(TankEntry entry);
 
-    @Query("SELECT * FROM TankEntry ORDER BY uid desc LIMIT :amount")
+    @Query("SELECT * FROM TankEntry ORDER BY date desc LIMIT :amount")
     List<TankEntry> getNewestEntries(int amount);
 
-    @Query("SELECT * FROM TankEntry WHERE uid = (SELECT MAX(uid) FROM TankEntry)")
-    TankEntry getLastEntry();
+    @Query("SELECT * FROM TankEntry WHERE date = (SELECT MAX(date) FROM TankEntry where date < :referenceDate)")
+    TankEntry getLastEntry(Date referenceDate);
 
     @Update
     void updateTankEntry(TankEntry tankEntry);
