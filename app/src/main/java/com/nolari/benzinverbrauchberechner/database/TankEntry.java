@@ -4,6 +4,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Date;
+
 /**
  * Created by Nolari on 03.03.2018.
  */
@@ -15,7 +17,7 @@ public class TankEntry {
     private int uid;
 
     @ColumnInfo
-    private String date;
+    private Date date;
 
     @ColumnInfo
     private float litres;
@@ -51,11 +53,11 @@ public class TankEntry {
         this.uid = uid;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

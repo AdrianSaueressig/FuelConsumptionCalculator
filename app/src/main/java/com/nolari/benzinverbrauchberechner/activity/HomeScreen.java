@@ -1,6 +1,7 @@
 package com.nolari.benzinverbrauchberechner.activity;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -16,6 +17,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,8 +32,11 @@ import com.nolari.benzinverbrauchberechner.fragment.HomeFragment;
 import com.nolari.benzinverbrauchberechner.fragment.NewEntryFragment;
 import com.nolari.benzinverbrauchberechner.navigation.BottomNavigationManager;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class HomeScreen extends AppCompatActivity{
 
@@ -77,12 +83,16 @@ public class HomeScreen extends AppCompatActivity{
         TextInputEditText inputLitres = findViewById(R.id.input_litres);
         TextInputEditText inputPricePerLitre = findViewById(R.id.input_pricePerLitre);
         TextInputEditText inputNotes = findViewById(R.id.input_notes);
+        TextInputEditText inputDate = findViewById(R.id.input_datefield);
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
 
         // read values
         if(inputTripmeter.getText().toString().isEmpty() ||
             inputKilometres.getText().toString().isEmpty() ||
             inputLitres.getText().toString().isEmpty() ||
-            inputPricePerLitre.getText().toString().isEmpty()){
+            inputPricePerLitre.getText().toString().isEmpty()||
+            inputDate.getText().toString().isEmpty()){
             showToast("Bitte in allen Feldern etwas eingeben vor dem Speichern!");
             return;
         }
@@ -91,10 +101,15 @@ public class HomeScreen extends AppCompatActivity{
         float litres = Float.parseFloat(inputLitres.getText().toString().replace(",", "."));
         float pricePerLitre = Float.parseFloat(inputPricePerLitre.getText().toString().replace(",", "."));
         float fuelConsumption = 0;
+        Date date = null;
+        try {
+            date = sdf.parse(inputDate.getText().toString());
+        } catch (ParseException e) {
+            date = new Date();
+        }
         String notes = inputNotes.getText().toString();
 
         //do stuff with database
-        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         TankDatabase database = DatabaseSingleton.getInstance(getApplicationContext());
 
         // edit old entry
@@ -108,7 +123,7 @@ public class HomeScreen extends AppCompatActivity{
 
         // create new database entry
         TankEntry newEntry = new TankEntry();
-        newEntry.setDate(sdf.format(new Date()));
+        newEntry.setDate(date);
         newEntry.setKilometres(kilometers);
         newEntry.setLitres(litres);
         newEntry.setPricePerLitre(pricePerLitre);
@@ -142,6 +157,40 @@ public class HomeScreen extends AppCompatActivity{
 
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+    }
+
+    public void onDatePickerClick(final View datePickerElement){
+        final Calendar cal = Calendar.getInstance();
+
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                cal.set(Calendar.YEAR, year);
+                cal.set(Calendar.MONTH, monthOfYear);
+                cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                String dateString = convertToDateString(cal);
+
+                ((EditText)findViewById(R.id.input_datefield)).setText(dateString);
+            }
+
+        };
+
+        new DatePickerDialog(
+                this,
+                dateSetListener,
+                cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH))
+                    .show();
+    }
+
+    private String convertToDateString(Calendar cal) {
+        String dateFormat = "dd.MM.yy";
+        SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.GERMAN);
+        return sdf.format(cal.getTime());
     }
 
     public void onDeleteClick(View button){

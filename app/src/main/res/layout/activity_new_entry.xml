@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_layout_pricePerLitre">
+        app:layout_constraintTop_toBottomOf="@+id/input_layout_date">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_notes"
@@ -93,6 +93,27 @@
             android:ems="10"
             android:hint="@string/input_notes"
             android:inputType="text" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout_date"
+        android:layout_marginTop="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/input_layout_pricePerLitre">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_datefield"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:clickable="true"
+            android:focusable="false"
+            android:inputType="date"
+            android:longClickable="false"
+            android:onClick="onDatePickerClick"
+            android:hint="@string/input_datefield_hint"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -111,6 +132,7 @@
         android:id="@+id/button_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:onClick="onSaveClick"
         android:text="@string/button_save"
         app:layout_constraintEnd_toEndOf="parent"

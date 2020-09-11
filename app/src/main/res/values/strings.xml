@@ -39,5 +39,6 @@
     <string name="input_notes">Notizen (optional)</string>
     <string name="settings_key_safeMode">safeMode</string>
     <string name="settings_category_general">Allgemein</string>
+    <string name="input_datefield_hint">Datum</string>
 
 </resources>

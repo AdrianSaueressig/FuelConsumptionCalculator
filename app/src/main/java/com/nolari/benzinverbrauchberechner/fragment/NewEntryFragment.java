@@ -12,8 +12,13 @@ import androidx.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.nolari.benzinverbrauchberechner.R;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 /**
  * Created by Nolari on 02.03.2018.
@@ -31,6 +36,10 @@ public class NewEntryFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        Calendar cal = Calendar.getInstance();
+        String dateFormat = "dd.MM.yy";
+        SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.GERMAN);
+        ((EditText)getActivity().findViewById(R.id.input_datefield)).setText(sdf.format(cal.getTime()));
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
