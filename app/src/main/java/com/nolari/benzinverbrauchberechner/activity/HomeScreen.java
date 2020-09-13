@@ -1,15 +1,14 @@
 package com.nolari.benzinverbrauchberechner.activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputEditText;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -19,17 +18,13 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nolari.benzinverbrauchberechner.R;
 import com.nolari.benzinverbrauchberechner.database.DatabaseSingleton;
 import com.nolari.benzinverbrauchberechner.database.TankDatabase;
 import com.nolari.benzinverbrauchberechner.database.TankEntry;
-import com.nolari.benzinverbrauchberechner.fragment.GraphFragment;
 import com.nolari.benzinverbrauchberechner.fragment.HomeFragment;
-import com.nolari.benzinverbrauchberechner.fragment.NewEntryFragment;
 import com.nolari.benzinverbrauchberechner.navigation.BottomNavigationManager;
 
 import java.text.ParseException;
@@ -191,13 +186,13 @@ public class HomeScreen extends AppCompatActivity{
 
         };
 
-        new DatePickerDialog(
+        DatePickerDialog datePicker = new DatePickerDialog(
                 this,
                 dateSetListener,
                 cal.get(Calendar.YEAR),
                 cal.get(Calendar.MONTH),
-                cal.get(Calendar.DAY_OF_MONTH))
-                    .show();
+                cal.get(Calendar.DAY_OF_MONTH));
+        datePicker.show();
     }
 
     private String convertToDateString(Calendar cal) {

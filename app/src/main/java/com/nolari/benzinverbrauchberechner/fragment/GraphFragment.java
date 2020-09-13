@@ -45,6 +45,10 @@ public class GraphFragment extends Fragment implements AdapterView.OnItemClickLi
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        getParentFragmentManager().beginTransaction().replace(R.id.fragment_container, TankEntryDetailViewFragment.newInstance(position, id, (TankEntry)parent.getAdapter().getItem(position)));
+        getActivity()
+                .getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, TankEntryDetailViewFragment.newInstance(position, id, (TankEntry)parent.getAdapter().getItem(position)))
+                .commit();
     }
 }
