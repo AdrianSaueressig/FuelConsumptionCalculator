@@ -123,7 +123,7 @@ public class HomeScreen extends AppCompatActivity{
         TankDatabase database = DatabaseSingleton.getInstance(getApplicationContext());
 
         // edit old entry
-        TankEntry latestEntry = database.getTankEntryDao().getLastEntry(date);
+        TankEntry latestEntry = database.getTankEntryDao().getLastEntry(kilometers);
 
         // create new database entry
         TankEntry newEntry = new TankEntry();

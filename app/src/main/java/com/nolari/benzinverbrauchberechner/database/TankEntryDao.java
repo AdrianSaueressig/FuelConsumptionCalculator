@@ -25,11 +25,11 @@ public interface TankEntryDao {
     @Delete
     void delete(TankEntry entry);
 
-    @Query("SELECT * FROM TankEntry ORDER BY date desc LIMIT :amount")
+    @Query("SELECT * FROM TankEntry ORDER BY kilometres desc LIMIT :amount")
     List<TankEntry> getNewestEntries(int amount);
 
-    @Query("SELECT * FROM TankEntry WHERE date = (SELECT MAX(date) FROM TankEntry where date < :referenceDate)")
-    TankEntry getLastEntry(Date referenceDate);
+    @Query("SELECT * FROM TankEntry WHERE uid = (SELECT uid FROM TankEntry where kilometres <= :referenceKilometres order by kilometres desc, date desc limit 1)")
+    TankEntry getLastEntry(float referenceKilometres);
 
     @Update
     void updateTankEntry(TankEntry tankEntry);
