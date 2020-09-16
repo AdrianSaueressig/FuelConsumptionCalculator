@@ -5,12 +5,17 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.preference.PreferenceManager;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +23,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.nolari.benzinverbrauchberechner.R;
@@ -27,6 +33,11 @@ import com.nolari.benzinverbrauchberechner.database.TankEntry;
 import com.nolari.benzinverbrauchberechner.fragment.HomeFragment;
 import com.nolari.benzinverbrauchberechner.navigation.BottomNavigationManager;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -34,6 +45,8 @@ import java.util.Date;
 import java.util.Locale;
 
 public class HomeScreen extends AppCompatActivity{
+
+    private static final int HAS_PICKED_IMAGE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -193,6 +206,45 @@ public class HomeScreen extends AppCompatActivity{
                 cal.get(Calendar.MONTH),
                 cal.get(Calendar.DAY_OF_MONTH));
         datePicker.show();
+    }
+
+    public void onMainImageClick(View mainImageContainer){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_PICK);
+        startActivityForResult(Intent.createChooser(intent, "Bild auswählen..."), HAS_PICKED_IMAGE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == HAS_PICKED_IMAGE && resultCode == Activity.RESULT_OK) {
+            if(data == null){
+                return;
+            }
+
+            try {
+                InputStream inputStream = this.getContentResolver().openInputStream(data.getData());
+                FileOutputStream outputStream = new FileOutputStream(new File(getFilesDir()+"/homescreenimage.jpg"));
+                byte[] buf = new byte[1024];
+                int len;
+                while((len=inputStream.read(buf))>0){
+                    outputStream.write(buf,0,len);
+                }
+                outputStream.close();
+                inputStream.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                return;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return;
+            }
+
+            Bitmap bitmap = BitmapFactory.decodeFile(getFilesDir() + "/homescreenimage.jpg");
+            ((ImageView)findViewById(R.id.imageView)).setImageBitmap(bitmap);
+        }
     }
 
     private String convertToDateString(Calendar cal) {
