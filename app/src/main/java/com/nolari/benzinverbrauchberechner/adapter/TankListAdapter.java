@@ -46,9 +46,9 @@ public class TankListAdapter extends ArrayAdapter<TankEntry> {
 
         TankEntry entry = getItem(position);
         dateTV.setText(sdf.format(entry.getDate()));
-        fcTV.setText(String.format("%.1f", entry.getFuelConsumption()) + " l/100km");
-        litresTV.setText(String.format("%.1f", entry.getLitres()) + " l");
-        tripmeterTV.setText(String.format("%.1f", entry.getTripmeter()) + " km");
+        fcTV.setText(String.format("%.2f", entry.getFuelConsumption()) + " l/100km");
+        litresTV.setText(String.format("%.2f", entry.getLitres()) + " l");
+        tripmeterTV.setText(String.format("%.2f", entry.getTripmeter()) + " km");
 
         return convertView;
     }

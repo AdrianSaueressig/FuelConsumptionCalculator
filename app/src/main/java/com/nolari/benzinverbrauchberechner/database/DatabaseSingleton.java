@@ -16,7 +16,10 @@ public class DatabaseSingleton {
     public static TankDatabase getInstance(Context applicationContext){
         if(tankDatabase == null){
             tankDatabase = Room.databaseBuilder(applicationContext,
-                    TankDatabase.class, "tank_database").allowMainThreadQueries().fallbackToDestructiveMigration().build();
+                    TankDatabase.class, "tank_database")
+                        .allowMainThreadQueries()
+                        .fallbackToDestructiveMigration()
+                        .build();
         }
         return tankDatabase;
     }

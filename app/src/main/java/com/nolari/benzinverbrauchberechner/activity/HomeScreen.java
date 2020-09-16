@@ -47,6 +47,7 @@ import java.util.Locale;
 public class HomeScreen extends AppCompatActivity{
 
     private static final int HAS_PICKED_IMAGE = 1;
+    private static final String SDF = "dd.MM.yyyy";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +94,7 @@ public class HomeScreen extends AppCompatActivity{
         TextInputEditText inputNotes = findViewById(R.id.input_notes);
         TextInputEditText inputDate = findViewById(R.id.input_datefield);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
+        SimpleDateFormat sdf = new SimpleDateFormat(SDF, Locale.GERMAN);
 
         // Check every mandatory field has data
         if(inputTripmeter.getText().toString().isEmpty() ||
@@ -160,7 +161,11 @@ public class HomeScreen extends AppCompatActivity{
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 
         //output
-        showToast("Eingaben wurden erfolgreich gespeichert! Der Verbrauch in l/100km des letzten Tankens ist: " + String.format("%.1f", newEntry.getFuelConsumption()));
+        String fuelConsLastTank = "Noch kein Wert";
+        if(latestEntry != null){
+            fuelConsLastTank = String.format(Locale.GERMAN, "%.2f", latestEntry.getFuelConsumption());
+        }
+        showToast("Eingaben wurden erfolgreich gespeichert! Der Verbrauch in l/100km des letzten Tankens ist: " + fuelConsLastTank);
     }
 
     private void recalculateOlderTankEntry(TankEntry oldEntry, float newTripmeter) {
@@ -248,8 +253,7 @@ public class HomeScreen extends AppCompatActivity{
     }
 
     private String convertToDateString(Calendar cal) {
-        String dateFormat = "dd.MM.yy";
-        SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.GERMAN);
+        SimpleDateFormat sdf = new SimpleDateFormat(SDF, Locale.GERMAN);
         return sdf.format(cal.getTime());
     }
 

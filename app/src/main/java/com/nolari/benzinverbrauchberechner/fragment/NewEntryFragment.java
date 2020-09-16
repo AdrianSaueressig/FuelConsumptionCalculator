@@ -37,7 +37,7 @@ public class NewEntryFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         Calendar cal = Calendar.getInstance();
-        String dateFormat = "dd.MM.yy";
+        String dateFormat = "dd.MM.yyyy";
         SimpleDateFormat sdf = new SimpleDateFormat(dateFormat, Locale.GERMAN);
         ((EditText)getActivity().findViewById(R.id.input_datefield)).setText(sdf.format(cal.getTime()));
 
