@@ -1,6 +1,5 @@
 package com.nolari.benzinverbrauchberechner.fragment;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -19,10 +18,6 @@ import com.nolari.benzinverbrauchberechner.R;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
-
-/**
- * Created by Nolari on 02.03.2018.
- */
 
 public class NewEntryFragment extends Fragment {
 

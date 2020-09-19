@@ -16,10 +16,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-/**
- * Created by Nolari on 03.03.2018.
- */
-
 public class TankListAdapter extends ArrayAdapter<TankEntry> {
 
     private Context context;

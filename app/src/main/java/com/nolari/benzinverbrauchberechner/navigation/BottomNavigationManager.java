@@ -15,7 +15,7 @@ import com.nolari.benzinverbrauchberechner.fragment.NewEntryFragment;
 
 public class BottomNavigationManager implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-    private FragmentManager fragmentManager = null;
+    private FragmentManager fragmentManager;
     private Fragment currentFragment = null;
 
     public BottomNavigationManager(FragmentManager fragmentManager){

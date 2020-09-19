@@ -6,10 +6,6 @@ import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-/**
- * Created by Nolari on 03.03.2018.
- */
-
 @Entity
 public class TankEntry {
 
@@ -103,6 +99,6 @@ public class TankEntry {
 
     @Override
     public String toString(){
-        return "Uid: " + uid + "\r\nDate: " + date + "\r\ntripmeter: " + tripmeter + "\nkilometers: " + kilometres + "\nlitres: " + litres + "\nprice per litre: " + pricePerLitre + "\nfuelConsumption: " + fuelConsumption + "\nnotes: " + notes;
+        return "Uid: " + uid + "\nDate: " + date + "\ntripmeter: " + tripmeter + "\nkilometers: " + kilometres + "\nlitres: " + litres + "\nprice per litre: " + pricePerLitre + "\nfuelConsumption: " + fuelConsumption + "\nnotes: " + notes;
     }
 }

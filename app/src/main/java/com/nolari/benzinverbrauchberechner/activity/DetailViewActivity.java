@@ -9,7 +9,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.nolari.benzinverbrauchberechner.R;
 import com.nolari.benzinverbrauchberechner.fragment.DetailViewFragment;
-import com.nolari.benzinverbrauchberechner.fragment.SettingsFragment;
 
 public class DetailViewActivity extends AppCompatActivity {
     @Override

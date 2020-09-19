@@ -21,10 +21,6 @@ import com.nolari.benzinverbrauchberechner.database.TankEntry;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Nolari on 02.03.2018.
- */
-
 public class GraphFragment extends Fragment implements AdapterView.OnItemClickListener{
 
     @Nullable
@@ -32,11 +28,11 @@ public class GraphFragment extends Fragment implements AdapterView.OnItemClickLi
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_graph, null);
 
-        TankDatabase database = DatabaseSingleton.getInstance(getActivity().getApplicationContext());
+        TankDatabase database = DatabaseSingleton.getInstance(getContext());
         List<TankEntry> tankEntries = database.getTankEntryDao().getNewestEntries(20);
         ArrayList<TankEntry> tankEntriesArray = new ArrayList<>(tankEntries);
 
-        TankListAdapter adapter = new TankListAdapter(getActivity().getApplicationContext(), R.layout.list_view_tankentry, tankEntriesArray);
+        TankListAdapter adapter = new TankListAdapter(getContext(), R.layout.list_view_tankentry, tankEntriesArray);
         ListView listView = v.findViewById(R.id.listView);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);

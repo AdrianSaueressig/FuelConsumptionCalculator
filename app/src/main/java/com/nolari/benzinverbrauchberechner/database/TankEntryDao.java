@@ -6,12 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import java.util.Date;
 import java.util.List;
-
-/**
- * Created by Nolari on 03.03.2018.
- */
 
 @Dao
 public interface TankEntryDao {
