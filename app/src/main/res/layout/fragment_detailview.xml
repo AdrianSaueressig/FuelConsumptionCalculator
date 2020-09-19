@@ -1,13 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="fragment.DetailViewFragment">
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/text3"/>
+        android:layout_height="wrap_content"
+        android:id="@+id/detailViewHeader"
+        android:text="Tankereignis vom %s"
+        android:gravity="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-</FrameLayout>
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detailViewHeader">
+
+        <TableRow>
+
+            <TextView
+                android:padding="3dip"
+                android:text="Getankte Liter" />
+
+            <TextView
+                android:id="@+id/detailView_litres"
+                android:padding="3dip"
+                android:text="@string/EmptyValue" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:padding="3dip"
+                android:text="Preis pro Liter" />
+
+            <TextView
+                android:id="@+id/detailView_pricePerLitre"
+                android:padding="3dip"
+                android:text="@string/EmptyValue" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:padding="3dip"
+                android:text="Kilometerstand" />
+
+            <TextView
+                android:id="@+id/detailView_kilometres"
+                android:padding="3dip"
+                android:text="@string/EmptyValue" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:padding="3dip"
+                android:text="Tageskilometerzähler" />
+
+            <TextView
+                android:id="@+id/detailView_tripmeter"
+                android:padding="3dip"
+                android:text="@string/EmptyValue" />
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:padding="3dip"
+                android:text="Verbrauch" />
+
+            <TextView
+                android:id="@+id/detailView_fuelConsumption"
+                android:padding="3dip"
+                android:text="@string/EmptyValue" />
+        </TableRow>
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

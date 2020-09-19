@@ -43,7 +43,7 @@
                 android:text="∅ Verbrauch"
                 android:padding="3dip" />
             <TextView
-                android:text="..."
+                android:text="@string/EmptyValue"
                 android:padding="3dip"
                 android:id="@+id/avgConsumption"/>
         </TableRow>
@@ -53,7 +53,7 @@
                 android:text="∅ getankte Liter"
                 android:padding="3dip" />
             <TextView
-                android:text="..."
+                android:text="@string/EmptyValue"
                 android:padding="3dip"
                 android:id="@+id/avgLitres"/>
         </TableRow>
@@ -63,7 +63,7 @@
                 android:text="∅ gefahrene Strecke pro Tanken"
                 android:padding="3dip" />
             <TextView
-                android:text="..."
+                android:text="@string/EmptyValue"
                 android:padding="3dip"
                 android:id="@+id/avgTripmeter"/>
         </TableRow>
@@ -73,7 +73,7 @@
                 android:text="∅ Preis pro Liter"
                 android:padding="3dip" />
             <TextView
-                android:text="..."
+                android:text="@string/EmptyValue"
                 android:padding="3dip"
                 android:id="@+id/avgPricePerLitre"/>
         </TableRow>
