@@ -103,6 +103,6 @@ public class TankEntry {
 
     @Override
     public String toString(){
-        return "Uid: " + uid + " Date: " + date + " tripmeter: " + tripmeter + " kilometers: " + kilometres + " litres: " + litres + " price per litre: " + pricePerLitre + " fuelConsumption: " + fuelConsumption + " notes: " + notes;
+        return "Uid: " + uid + "\r\nDate: " + date + "\r\ntripmeter: " + tripmeter + "\nkilometers: " + kilometres + "\nlitres: " + litres + "\nprice per litre: " + pricePerLitre + "\nfuelConsumption: " + fuelConsumption + "\nnotes: " + notes;
     }
 }

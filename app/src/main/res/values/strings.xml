@@ -43,5 +43,6 @@
     <string name="settings_title_mainImage">Bild für die Hauptseite</string>
     <string name="settings_summary_mainImage">Wähle dein Bild für die Hauptseite</string>
     <string name="settings_key_mainImage">setting_mainImage</string>
+    <string name="activity_detailViewActivity">Details zum Tankereignis</string>
 
 </resources>

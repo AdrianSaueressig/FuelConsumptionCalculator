@@ -31,6 +31,9 @@ public interface TankEntryDao {
     @Query("SELECT * FROM TankEntry WHERE uid = (SELECT uid FROM TankEntry where kilometres <= :referenceKilometres order by kilometres desc, date desc limit 1)")
     TankEntry getLastEntry(float referenceKilometres);
 
+    @Query("SELECT * FROM TankEntry where uid = :uid")
+    TankEntry getEntry(int uid);
+
     @Update
     void updateTankEntry(TankEntry tankEntry);
 }

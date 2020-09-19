@@ -12,6 +12,9 @@
         <activity android:name=".activity.SettingsActivity"
             android:label="@string/activity_settings"
             android:parentActivityName=".activity.HomeScreen"/>
+        <activity android:name=".activity.DetailViewActivity"
+            android:label="@string/activity_detailViewActivity"
+            android:parentActivityName=".activity.DetailViewActivity"/>
         <activity
             android:name=".activity.HomeScreen"
             android:label="@string/app_name">
