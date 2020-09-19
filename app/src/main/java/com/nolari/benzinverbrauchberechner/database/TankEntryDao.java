@@ -29,6 +29,18 @@ public interface TankEntryDao {
     @Query("SELECT * FROM TankEntry where uid = :uid")
     TankEntry getEntry(int uid);
 
+    @Query("SELECT AVG(pricePerLitre) FROM TankEntry")
+    float getAveragePricePerLitre();
+
+    @Query("SELECT AVG(litres) FROM TankEntry")
+    float getAverageLitres();
+
+    @Query("SELECT AVG(tripmeter) FROM TankEntry where tripmeter > 0")
+    float getAverageTripmeter();
+
+    @Query("SELECT 100*(SUM(litres)/SUM(tripmeter)) FROM TankEntry where tripmeter > 0")
+    float getAverageConsumption();
+
     @Update
     void updateTankEntry(TankEntry tankEntry);
 }

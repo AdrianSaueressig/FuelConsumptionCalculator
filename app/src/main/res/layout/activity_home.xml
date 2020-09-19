@@ -31,27 +31,52 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TableLayout
-        android:layout_width="409dp"
-        android:layout_height="339dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        <TableRow>
+            <TextView
+                android:text="∅ Verbrauch"
+                android:padding="3dip" />
+            <TextView
+                android:text="..."
+                android:padding="3dip"
+                android:id="@+id/avgConsumption"/>
+        </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        <TableRow>
+            <TextView
+                android:text="∅ getankte Liter"
+                android:padding="3dip" />
+            <TextView
+                android:text="..."
+                android:padding="3dip"
+                android:id="@+id/avgLitres"/>
+        </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        <TableRow>
+            <TextView
+                android:text="∅ gefahrene Strecke pro Tanken"
+                android:padding="3dip" />
+            <TextView
+                android:text="..."
+                android:padding="3dip"
+                android:id="@+id/avgTripmeter"/>
+        </TableRow>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        <TableRow>
+            <TextView
+                android:text="∅ Preis pro Liter"
+                android:padding="3dip" />
+            <TextView
+                android:text="..."
+                android:padding="3dip"
+                android:id="@+id/avgPricePerLitre"/>
+        </TableRow>
     </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
