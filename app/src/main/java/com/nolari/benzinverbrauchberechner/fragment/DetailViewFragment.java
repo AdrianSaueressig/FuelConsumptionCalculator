@@ -39,17 +39,20 @@ public class DetailViewFragment extends Fragment{
         TextView tvKilometres = v.findViewById(R.id.detailView_kilometres);
         TextView tvTripmeter = v.findViewById(R.id.detailView_tripmeter);
         TextView tvConsumption = v.findViewById(R.id.detailView_fuelConsumption);
-        TextView tvNote = v.findViewById(R.id.detailView_notes);
 
-        tvHeader.setText(
-                String.format(tvHeader.getText().toString(),
-                        sdf.format(tankEntry.getDate())));
+        tvHeader.setText(sdf.format(tankEntry.getDate()));
         tvLitres.setText(formatFloat2Decimals(tankEntry.getLitres(), "l"));
         tvPpl.setText(formatFloat3Decimals(tankEntry.getPricePerLitre(), "€/l"));
         tvKilometres.setText(formatFloat1Decimal(tankEntry.getKilometres(), "km"));
         tvTripmeter.setText(formatFloat1Decimal(tankEntry.getTripmeter(), "km"));
         tvConsumption.setText(formatFloat2Decimals(tankEntry.getFuelConsumption(), "l/100km"));
-        tvNote.setText(tankEntry.getNotes());
+
+        if(tankEntry.getNotes() == null || tankEntry.getNotes().isEmpty()){
+            v.findViewById(R.id.tableRowNotes).setVisibility(View.GONE);
+        }else{
+            TextView tvNote = v.findViewById(R.id.detailView_notes);
+            tvNote.setText(tankEntry.getNotes());
+        }
 
         return v;
     }
