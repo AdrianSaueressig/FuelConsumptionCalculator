@@ -6,10 +6,11 @@
     <string name="title_new_entry">Neuer Eintrag</string>
     <string name="title_history">Graph</string>
 
-    <!-- Activities -->
+    <!-- Home -->
     <string name="activity_content_home">Willkommen bei deiner persönlichen TankApp! \nBei Fragen kannst du mich gerne anrufen oder eine Mail schreiben.\n
     Unten siehst du 3 Knöpfe. Der Home-Knopf wird dich auf diese Seite bringen.\nBei "Neuer Eintrag" kannst du nach dem Tanken deine Werte reinschreiben und bei "Verlauf" soll in Zukunft ein Graph auftauchen, der zeigt wie sich die Daten über die Zeit so geändert haben. Viel Spaß :)</string>
 
+    <!-- New entry -->
     <string name="title_activity_new_entry">Neuen Eintrag hinzufügen</string>
     <string name="activity_newEntry_content">Trage hier deine aktuellen Werte ein.</string>
     <string name="button_save">Speichern</string>
@@ -17,9 +18,9 @@
     <string name="input_kilometers">Kilometerstand</string>
     <string name="input_tripmeter">Tageskilometerzähler</string>
     <string name="input_pricePerLitre">Preis pro Liter</string>
-
-    <string name="title_activity_graph">Verlauf</string>
-    <string name="content_activity_graph">In Kürze verfügbar. Zum Druckmachen mich anrufen oder Mail schreiben :D</string>
+    <string name="delete_all_entries">DELETE ALL ENTRIES</string>
+    <string name="input_datefield_hint">Datum</string>
+    <string name="input_notes">Notizen (optional)</string>
 
     <!-- Graph fragment -->
     <string name="list_title_date">Datum</string>
@@ -28,21 +29,20 @@
     <string name="list_title_tripmeter">Gefahrene Km</string>
 
     <!-- toolbar -->
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Einstellungen</string>
 
     <!-- settings -->
     <string name="activity_settings">Einstellungen</string>
     <string name="settings_title_sendFeedback">Nachricht an den Entwickler senden</string>
     <string name="settings_summary_sendFeedback">Berichte von Fehlern oder äußere Wünsche zu neuen Funktionen</string>
     <string name="settings_title_safeMode">Versteckt Löschbuttons</string>
-    <string name="delete_all_entries">DELETE ALL ENTRIES</string>
-    <string name="input_notes">Notizen (optional)</string>
     <string name="settings_key_safeMode">safeMode</string>
     <string name="settings_category_general">Allgemein</string>
-    <string name="input_datefield_hint">Datum</string>
     <string name="settings_title_mainImage">Bild für die Hauptseite</string>
     <string name="settings_summary_mainImage">Wähle dein Bild für die Hauptseite</string>
     <string name="settings_key_mainImage">setting_mainImage</string>
+
+    <!-- detailview -->
     <string name="activity_detailViewActivity">Details zum Tankereignis</string>
     <string name="EmptyValue">...</string>
 

@@ -39,6 +39,7 @@ public class DetailViewFragment extends Fragment{
         TextView tvKilometres = v.findViewById(R.id.detailView_kilometres);
         TextView tvTripmeter = v.findViewById(R.id.detailView_tripmeter);
         TextView tvConsumption = v.findViewById(R.id.detailView_fuelConsumption);
+        TextView tvNote = v.findViewById(R.id.detailView_notes);
 
         tvHeader.setText(
                 String.format(tvHeader.getText().toString(),
@@ -48,6 +49,7 @@ public class DetailViewFragment extends Fragment{
         tvKilometres.setText(formatFloat1Decimal(tankEntry.getKilometres(), "km"));
         tvTripmeter.setText(formatFloat1Decimal(tankEntry.getTripmeter(), "km"));
         tvConsumption.setText(formatFloat2Decimals(tankEntry.getFuelConsumption(), "l/100km"));
+        tvNote.setText(tankEntry.getNotes());
 
         return v;
     }

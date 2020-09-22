@@ -12,8 +12,8 @@
         android:id="@+id/listItemDate"
         android:layout_weight="33"/>
     <TextView
-        android:gravity="center"
-        android:textAlignment="center"
+        android:gravity="end"
+        android:textAlignment="viewEnd"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:id="@+id/listItemConsumption"
@@ -22,16 +22,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:paddingRight="16dp"
         android:layout_weight="33">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:gravity="center"
+            android:gravity="end"
+            android:textAlignment="viewEnd"
             android:id="@+id/listItemLitres"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:gravity="center"
+            android:gravity="end"
+            android:textAlignment="viewEnd"
             android:id="@+id/listItemTripmeter"/>
 
     </LinearLayout>

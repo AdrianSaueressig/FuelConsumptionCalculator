@@ -1,13 +1,14 @@
 package com.nolari.benzinverbrauchberechner.adapter;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.nolari.benzinverbrauchberechner.R;
 import com.nolari.benzinverbrauchberechner.database.TankEntry;
@@ -42,9 +43,9 @@ public class TankListAdapter extends ArrayAdapter<TankEntry> {
 
         TankEntry entry = getItem(position);
         dateTV.setText(sdf.format(entry.getDate()));
-        fcTV.setText(String.format(Locale.GERMAN, "%.2f", entry.getFuelConsumption()) + " l/100km");
-        litresTV.setText(String.format(Locale.GERMAN, "%.2f", entry.getLitres()) + " l");
-        tripmeterTV.setText(String.format(Locale.GERMAN, "%.2f", entry.getTripmeter()) + " km");
+        fcTV.setText(String.format(Locale.GERMAN, "%.1f", entry.getFuelConsumption()) + " l/100km");
+        litresTV.setText(String.format(Locale.GERMAN, "%.1f", entry.getLitres()) + " l");
+        tripmeterTV.setText(String.format(Locale.GERMAN, "%.1f", entry.getTripmeter()) + " km");
 
         return convertView;
     }
