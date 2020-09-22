@@ -27,37 +27,49 @@
         <TableRow>
             <TextView
                 android:text="∅ Verbrauch"
+                style="@style/BoldBlackText"
                 android:padding="3dip" />
+        </TableRow>
+        <TableRow>
             <TextView
                 android:text="@string/EmptyValue"
                 android:padding="3dip"
                 android:id="@+id/avgConsumption"/>
         </TableRow>
 
-        <TableRow>
+        <TableRow android:layout_marginTop="3dp">
             <TextView
                 android:text="∅ getankte Liter"
+                style="@style/BoldBlackText"
                 android:padding="3dip" />
+        </TableRow>
+        <TableRow>
             <TextView
                 android:text="@string/EmptyValue"
                 android:padding="3dip"
                 android:id="@+id/avgLitres"/>
         </TableRow>
 
-        <TableRow>
+        <TableRow android:layout_marginTop="3dp">
             <TextView
                 android:text="∅ gefahrene Strecke pro Tanken"
+                style="@style/BoldBlackText"
                 android:padding="3dip" />
+        </TableRow>
+        <TableRow>
             <TextView
                 android:text="@string/EmptyValue"
                 android:padding="3dip"
                 android:id="@+id/avgTripmeter"/>
         </TableRow>
 
-        <TableRow>
+        <TableRow android:layout_marginTop="3dp">
             <TextView
                 android:text="∅ Preis pro Liter"
+                style="@style/BoldBlackText"
                 android:padding="3dip" />
+        </TableRow>
+        <TableRow>
             <TextView
                 android:text="@string/EmptyValue"
                 android:padding="3dip"
