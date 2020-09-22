@@ -7,12 +7,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.textfield.TextInputEditText;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +16,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.textfield.TextInputEditText;
 import com.nolari.benzinverbrauchberechner.R;
 import com.nolari.benzinverbrauchberechner.database.DatabaseSingleton;
 import com.nolari.benzinverbrauchberechner.database.TankDatabase;
@@ -52,7 +51,7 @@ public class HomeScreen extends AppCompatActivity{
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.top_toolbar);
         setSupportActionBar(myToolbar);
-        myToolbar.inflateMenu(R.menu.toptoolbar);
+        myToolbar.inflateMenu(R.menu.toptoolbar_overflowmenu_homeactivity);
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         BottomNavigationManager navManager = new BottomNavigationManager(getSupportFragmentManager());
@@ -62,7 +61,7 @@ public class HomeScreen extends AppCompatActivity{
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.toptoolbar, menu);
+        getMenuInflater().inflate(R.menu.toptoolbar_overflowmenu_homeactivity, menu);
         return true;
     }
 

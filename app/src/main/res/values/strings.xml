@@ -35,15 +35,18 @@
     <string name="activity_settings">Einstellungen</string>
     <string name="settings_title_sendFeedback">Nachricht an den Entwickler senden</string>
     <string name="settings_summary_sendFeedback">Berichte von Fehlern oder äußere Wünsche zu neuen Funktionen</string>
-    <string name="settings_title_safeMode">Versteckt Löschbuttons</string>
+    <string name="settings_title_safeMode">Sicherer Modus</string>
     <string name="settings_key_safeMode">safeMode</string>
+    <string name="settings_safeMode_summary">Versteckt den \'Alle Einträge Löschen\' Knopf</string>
     <string name="settings_category_general">Allgemein</string>
     <string name="settings_title_mainImage">Bild für die Hauptseite</string>
     <string name="settings_summary_mainImage">Wähle dein Bild für die Hauptseite</string>
     <string name="settings_key_mainImage">setting_mainImage</string>
 
     <!-- detailview -->
-    <string name="activity_detailViewActivity">Details zum Tankereignis</string>
+    <string name="activity_detailViewActivity">Details</string>
     <string name="EmptyValue">...</string>
+    <string name="action_delete">Eintrag löschen</string>
+    <string name="action_edit">Eintrag bearbeiten</string>
 
 </resources>

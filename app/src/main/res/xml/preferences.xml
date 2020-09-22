@@ -5,6 +5,7 @@
         <SwitchPreferenceCompat
             app:key="@string/settings_key_safeMode"
             app:title="@string/settings_title_safeMode"
+            app:summary="@string/settings_safeMode_summary"
             android:defaultValue="true"/>
 
         <Preference
