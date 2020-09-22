@@ -4,7 +4,7 @@
     <!-- Navigation Bar-->
     <string name="title_home">Home</string>
     <string name="title_new_entry">Neuer Eintrag</string>
-    <string name="title_history">Graph</string>
+    <string name="title_history">Liste</string>
 
     <!-- Home -->
     <string name="activity_content_home">Willkommen bei deiner persönlichen TankApp! \nBei Fragen kannst du mich gerne anrufen oder eine Mail schreiben.\n
