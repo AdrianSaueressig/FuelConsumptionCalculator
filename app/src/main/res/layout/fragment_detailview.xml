@@ -15,8 +15,7 @@
         android:layout_marginTop="10dp"
         android:text="04.09.2020"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
+        style="@style/BoldBlackText"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TableLayout
@@ -25,7 +24,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="0dp"
         app:layout_constraintTop_toBottomOf="@id/detailViewHeader">
 
         <TableRow
@@ -33,10 +31,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                app:tint="@color/textDefaultColor"
+                style="@style/IconsForDetailView"
                 app:srcCompat="@drawable/ic_local_gas_station_black_24dp" />
 
             <LinearLayout
@@ -48,8 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="3dip"
-                android:textStyle="bold"
-                android:textColor="@color/black"
+                style="@style/BoldBlackText"
                 android:layout_weight="1"
                 android:text="Getankte Liter"
                 android:gravity="bottom"/>
@@ -70,10 +64,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                app:tint="@color/textDefaultColor"
+                style="@style/IconsForDetailView"
                 app:srcCompat="@drawable/ic_euro_24px" />
             <LinearLayout
                 android:orientation="vertical"
@@ -83,8 +74,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
+                    style="@style/BoldBlackText"
                     android:padding="3dip"
                     android:layout_weight="1"
                     android:text="Preis pro Liter"
@@ -106,10 +96,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                app:tint="@color/textDefaultColor"
+                style="@style/IconsForDetailView"
                 app:srcCompat="@drawable/ic_speed_24px" />
 
             <LinearLayout
@@ -120,8 +107,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
+                    style="@style/BoldBlackText"
                     android:padding="3dip"
                     android:text="Kilometerstand"
                     android:layout_weight="1"
@@ -143,10 +129,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                app:tint="@color/textDefaultColor"
+                style="@style/IconsForDetailView"
                 app:srcCompat="@drawable/ic_today_24px" />
 
             <LinearLayout
@@ -157,8 +140,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
+                    style="@style/BoldBlackText"
                     android:padding="3dip"
                     android:text="Tageskilometerzähler"
                     android:layout_weight="1"
@@ -181,10 +163,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                app:tint="@color/textDefaultColor"
+                style="@style/IconsForDetailView"
                 app:srcCompat="@drawable/ic_opacity_24px" />
 
             <LinearLayout
@@ -195,8 +174,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
+                    style="@style/BoldBlackText"
                     android:padding="3dip"
                     android:text="Verbrauch"
                     android:layout_weight="1"
@@ -220,10 +198,7 @@
             android:id="@+id/tableRowNotes">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_margin="10dp"
-                app:tint="@color/textDefaultColor"
+                style="@style/IconsForDetailView"
                 app:srcCompat="@drawable/ic_comment_24px" />
 
             <LinearLayout
@@ -234,8 +209,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
+                    style="@style/BoldBlackText"
                     android:padding="3dip"
                     android:text="Notiz"
                     android:layout_weight="1"
