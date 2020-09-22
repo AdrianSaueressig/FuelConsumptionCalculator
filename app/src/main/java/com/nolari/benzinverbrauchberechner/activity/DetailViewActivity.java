@@ -1,7 +1,9 @@
 package com.nolari.benzinverbrauchberechner.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,7 +29,12 @@ public class DetailViewActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int uid = intent.getIntExtra("TANKENTRY_UID", -1);
         if(uid == -1){
-            return; // TODO display error?
+            Context context = getApplicationContext();
+            int duration = Toast.LENGTH_LONG;
+
+            Toast toast = Toast.makeText(context, "Es ist ein Fehler aufgetreten beim Anzeigen der Details. Bitte erstelle einen Bugreport in den Einstellungen.", duration);
+            toast.show();
+            return;
         }
 
         getSupportFragmentManager()
